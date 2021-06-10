@@ -1674,6 +1674,18 @@ tags = [
   }
 ]
 
+puts 'Destroying Platforms'
+
+Platform.destroy_all
+
+puts 'Destroying Tags'
+
+Tag.destroy_all
+
+puts 'Destroying Influencers'
+
+Influencer.destroy_all
+
 puts 'Creating Platforms'
 
 platforms.each do |plat|
