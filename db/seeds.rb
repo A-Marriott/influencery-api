@@ -1674,6 +1674,14 @@ tags = [
   }
 ]
 
+puts 'Destroying Influencer Tags'
+
+InfluencerTag.destroy_all
+
+puts 'Destroying Influencers'
+
+Influencer.destroy_all
+
 puts 'Destroying Platforms'
 
 Platform.destroy_all
@@ -1681,10 +1689,6 @@ Platform.destroy_all
 puts 'Destroying Tags'
 
 Tag.destroy_all
-
-puts 'Destroying Influencers'
-
-Influencer.destroy_all
 
 puts 'Creating Platforms'
 
@@ -1698,12 +1702,14 @@ tags.each do |tag|
   Tag.create!(tag)
 end
 
-tag_length = tags.length
+tag_id_range = (Tag.first.id..Tag.last.id)
+# tag_length = tags.length
 
 puts 'Creating Influencers'
 
 influencers.each do |inf|
   Influencer.create!(inf) do |influencer|
-    influencer.tag_ids = [rand(1..tag_length), rand(1..tag_length), rand(1..tag_length), rand(1..tag_length)]
+    # influencer.tag_ids = [rand(1..tag_length), rand(1..tag_length), rand(1..tag_length), rand(1..tag_length)]
+    influencer.tag_ids = [rand(tag_id_range), rand(tag_id_range), rand(tag_id_range), rand(tag_id_range)]
   end
 end
