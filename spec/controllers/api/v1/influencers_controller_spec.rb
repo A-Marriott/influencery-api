@@ -41,7 +41,7 @@ describe Api::V1::InfluencersController do
       before(:example) do
         platform = Platform.create(id: 1, name: 'facebook', base_url: 'https://www.facebook.com/')
 
-        ("a".."z").to_a[0...9].each do |letter|
+        ("a".."z").to_a[0..9].each do |letter|
           Influencer.create(handle: letter, followers: rand(100), profile_pic_url: 'https://pbs.twimg.com/profile_images/1359778507224723457/QrykIUlp.jpg', platform_id: platform.id)
         end
 
